@@ -44,7 +44,7 @@ setup_nltk_on_lambda()
 
 
 def webhook_lambda_handler(event, context):
-    logger.setLevel(logging.INFO)
+    log.setLevel(logging.INFO)
     try:
         handler(event, context, respond=True)
     except:
