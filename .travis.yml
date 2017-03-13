@@ -16,6 +16,3 @@ deploy:
   skip_cleanup: true
   provider: script
   script: bin/deploy.sh
-  on:
-    tags: true
-    all_branches: true
