@@ -2,6 +2,10 @@
 
 This is a simple chatbot that runs on Telegram
 
+### Status
+[![Build Status](https://travis-ci.org/rrx/xchatbot-serverless.svg)](https://travis-ci.org/rrx/xchatbot-serverless)
+
+
 ### Install Instructions
 
 Set the environment variable "TELEGRAM_API_KEY" to be your telegram bot token.
