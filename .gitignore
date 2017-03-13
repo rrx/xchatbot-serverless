@@ -1,0 +1,9 @@
+vendored/*
+.serverless
+.ipynb_checkpoints
+.env
+*.pyc
+.cache
+.tox
+old/
+chatbot_serverless.egg-info
