@@ -29,8 +29,8 @@ def get_chatbot(database=None):
     return chatbot
 
 
-def get_bot():
-    bot = telegram.Bot(token=os.environ.get("TELEGRAM_API_KEY",""))
+def get_bot(token):
+    bot = telegram.Bot(token=token)
     return bot
 
 

@@ -57,12 +57,16 @@ def webhook_lambda_handler(event, context):
     }
 
 
-def handler(_event, context, respond=True, database='/tmp/database.db'):
+def handler(_event, context, token=None, respond=True, database='/tmp/database.db'):
     # don't modify the event object, we do a deep copy
     event = copy.deepcopy(_event)
     log.debug("Event %s", event)
 
-    bot = get_bot()
+    if token is None:
+        token = os.environ.get("TELEGRAM_API_KEY", "")
+
+    bot = get_bot(token)
+
     chatbot = get_chatbot(database=database)
     # if the event is malformed, then just return ok
 

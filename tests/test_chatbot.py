@@ -8,6 +8,7 @@ def test():
     r = handle_incoming_response(chatbot, "Blue")
     assert(r == "Special cases aren't special enough to break the rules.")
 
+TOKEN="133505823:AAHZFMHno3mzVLErU5b5jJvaeG--qUyLyG0"
 
 EVENT = {
     "update_id":10000,
@@ -16,7 +17,7 @@ EVENT = {
     "chat":{
        "type": "test",
        "last_name":"Test Lastname",
-       "id":1111111,
+       "id":12173560,
        "first_name":"Test",
        "username":"Test"
     },
@@ -33,8 +34,8 @@ EVENT = {
 
 
 def test_lambda_event():
-    assert 'ok' == handler(EVENT, {}, respond=False)
+    assert 'ok' == handler(EVENT, {}, token=TOKEN, respond=False)
 
 
 def test_proxy():
-    assert 'ok' == handler({'body': json.dumps(EVENT)}, {}, respond=False)
+    assert 'ok' == handler({'body': json.dumps(EVENT)}, {}, token=TOKEN, respond=False)
