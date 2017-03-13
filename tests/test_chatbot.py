@@ -8,6 +8,7 @@ def test():
     r = handle_incoming_response(chatbot, "Blue")
     assert(r == "Special cases aren't special enough to break the rules.")
 
+# this is a test token that's used in the telegram-bot unittests.
 TOKEN="133505823:AAHZFMHno3mzVLErU5b5jJvaeG--qUyLyG0"
 
 EVENT = {
