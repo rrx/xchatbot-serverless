@@ -1,9 +1,6 @@
 language: python
 python:
-  - "2.6"
   - "2.7"
-  - "3.2"
-  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
@@ -12,3 +9,13 @@ python:
 install: "pip install -r requirements.txt"
 # command to run tests
 script: pytest tests
+
+before_deploy:
+  - npm i -g serverless@1.8.0
+
+deploy:
+  provider: script
+  script: bin/deploy.sh
+  on:
+    tags: true
+    all_branches: true

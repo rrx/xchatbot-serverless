@@ -20,9 +20,25 @@ package:
     - .env
     - .cache/**
     - tests/**
+
 functions:
-  chatbot:
+  webhook_post:
     handler: lambda_handler.webhook_lambda_handler
     environment:
       TELEGRAM_API_KEY: ${env:TELEGRAM_API_KEY}
-      HOME: /tmp/
+      HOME: /var/task
+      SLS_DEBUG: "*"
+    events:
+      - http:
+          path: /telegram_webhook
+          method: post
+  webhook_get:
+    handler: lambda_handler.webhook_lambda_handler
+    environment:
+      TELEGRAM_API_KEY: ${env:TELEGRAM_API_KEY}
+      HOME: /var/task
+      SLS_DEBUG: "*"
+    events:
+      - http:
+          path: /telegram_webhook
+          method: get

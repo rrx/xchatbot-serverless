@@ -7,3 +7,5 @@ vendored/*
 .tox
 old/
 chatbot_serverless.egg-info
+npm-debug.log
+nltk_data

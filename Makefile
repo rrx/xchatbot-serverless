@@ -1,11 +1,13 @@
 default:
 
 deploy:
-	pip install -t vendored -r requirements.txt
-	serverless deploy
+	bin/deploy.sh
 
 invoke:
-	serverless invoke --function chatbot
+	serverless invoke --stage prod --function webhook_post
 
 logs:
-	serverless logs --function chatbot -t
+	serverless logs --stage prod --function webhook_post -t
+
+test:
+	pytest tests

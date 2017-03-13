@@ -4,6 +4,8 @@ import telegram
 from chatterbot import ChatBot
 from telegram import Bot, Update
 import simplejson as json
+import logging
+log = logging.getLogger(__name__)
 
 
 def train_chatbot(chatbot):
@@ -16,11 +18,12 @@ def train_chatbot(chatbot):
     # Train based on the english conversations corpus
     chatbot.train("chatterbot.corpus.english.conversations")
 
-def get_chatbot():
+def get_chatbot(database=None):
     chatbot = ChatBot(
         'Ron Obvious',
         trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-        storage_adapter='chatterbot.storage.JsonFileStorageAdapter'
+        storage_adapter='chatterbot.storage.JsonFileStorageAdapter',
+        database=None
     )
     train_chatbot(chatbot)
     return chatbot
@@ -61,13 +64,13 @@ if __name__ == '__main__':
           },
           "update_id": 10000
         }
-        print(webhook_lambda_handler(event, {}))
+        log.info(webhook_lambda_handler(event, {}))
 
     import sys
     import os
     cmd = sys.argv[1]
     if cmd == 'test':
         chatbot = get_chatbot()
-        print(chatbot.get_response("Hello"))
+        log.info(chatbot.get_response("Hello"))
     else:
         run(os.environ.get("TELEGRAM_API_KEY",""))
