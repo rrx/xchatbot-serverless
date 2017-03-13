@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 BRANCH=${TRAVIS_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}
+# default to us-east-1 if not set
+REGION=${AWS_REGION:-us-east-1}
+
 if [[ $BRANCH == 'master' ]]; then
   STAGE="prod"
 elif [[ $BRANCH == 'develop' ]]; then
@@ -19,4 +22,4 @@ python -c "import lambda_utils as u;u.setup_nltk_on_lambda()"
 
 echo "Deploying from branch $BRANCH to stage $STAGE"
 #npm prune --production  #remove devDependencies
-sls deploy --stage $STAGE --region $AWS_REGION
+sls deploy --stage $STAGE --region $REGION
