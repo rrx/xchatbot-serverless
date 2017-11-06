@@ -11,3 +11,6 @@ logs:
 
 test:
 	pytest tests
+
+clean:
+	rm -rf vendored nltk_data .tox .cache
